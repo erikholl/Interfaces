@@ -1,48 +1,22 @@
 package be.intecbrussel.geometry;
 
-import javax.swing.*;
-
 public class GuiApp {
-
     public static void main(String[] args) {
-        int w = 640;
-        int h = 480;
-        JFrame f = new JFrame();
+        int height = 800;
+        int width = 800;
 
+        Rectangle rectangle = new Rectangle(200, 300, 20, 50);
+        Rectangle rectangle2 = new Rectangle(111, 200, 200, 500);
+        Rectangle rectangle3 = new Rectangle(200, 50, 600, 600);
 
-//        Drawing drawing = new Drawing();
-//        Rectangle rect = new Rectangle(10, 50, 31, 110);
-//        Circle circ = new Circle(21, 211, 303);
-//
-//        drawing.add(rect);
-//        drawing.add(circ);
-//
-        Gui gui = new Gui(w, h);
+        Drawing drawing = new Drawing();
+        drawing.add(rectangle);
+        drawing.add(rectangle2);
+        drawing.add(rectangle3);
 
-//        DrawingContext dc = new Gui(w, h);
+        Gui gui = new Gui(height, width);
+        drawing.draw(gui);
 
-//        drawing.draw(gui);
-
-        f.setSize(w, h);
-        f.setTitle("drawing");
-        f.add(gui);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
-
-//        Drawing myLittlePicasso = new Drawing();
-//        Rectangle rect = new Rectangle(10, 9);
-//        Triangle tri = new Triangle(12, 5, 7);
-//        Circle cir = new Circle(11);
-
-//        myLittlePicasso.add(rect);
-//        myLittlePicasso.add(tri);
-//        myLittlePicasso.add(cir);
-//
-//        myLittlePicasso.draw(gui);
-//        myLittlePicasso.scale(Scalable.DOUBLE);
-//        myLittlePicasso.draw(dc);
-
+        gui.draw();
     }
 }
-
-
