@@ -28,6 +28,13 @@ public class GraphicalDrawable extends JComponent {
                 g.setColor(Color.BLACK);
                 g.fillRect(rectangle.getX(), rectangle.getY(),
                         rectangle.getWidth(), rectangle.getHeight());
+            } else if (drawable instanceof Circle) {
+                Circle circle = (Circle) drawable;
+                g.setColor(Color.YELLOW);
+                g.fillOval(circle.getX(), circle.getY(), circle.getRadius(),
+                        circle.getRadius());
+            } else if (drawable instanceof Triangle) {
+
             }
         }
     }

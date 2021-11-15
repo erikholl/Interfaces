@@ -20,6 +20,7 @@ public class Gui implements DrawingContext {
 
     @Override
     public void draw(Circle circle) {
+        GraphicalDrawable.add(circle);
 
     }
 
