@@ -1,9 +1,10 @@
 package be.intecbrussel.geometry;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Objects;
 
-public class Drawing implements Drawable {
+public class Drawing implements Drawable, Iterable<Drawable> {
     private static int count;
     private Drawable[] drawables;
     private int size;
@@ -97,6 +98,52 @@ public class Drawing implements Drawable {
         }                                               // toString and add
         return toReturn;                                // a linebreak. Return.
     }
+
+    public void add(Drawable... drawables) {
+        // ... notation allows for inputting different objects or an array fo
+        // objects
+        for (Drawable drawable : drawables) {
+            add(drawable);
+        }
+
+    }
+
+    @Override
+    public Iterator<Drawable> iterator() {
+        return new DrawableIterator();
+    }
+
+    class DrawableIterator implements Iterator<Drawable> {
+
+        private int indexNextElement = 0;
+
+        @Override
+        public boolean hasNext() {
+            if (indexNextElement >= drawables.length) {
+                return false;
+            }
+
+            if(drawables[indexNextElement] != null) {
+                return true;
+            }
+            else {
+                indexNextElement++;
+                return hasNext(); // recursion: the hasNext method calls
+                // itself. We use this here to skip a null value and check
+                // the next index of the array. We can also solve the issue
+                // with skipping nulls with a while loop: remove the
+                // recursion to hasNext and implement a while(true) outside
+                // of the if statements
+            }
+        }
+
+        @Override
+        public Drawable next() {
+//            System.out.println("test");
+            return drawables[indexNextElement++];
+        }
+    }
+
 
     // do i have to add here the override for JComponent?? Hmmm, maybe..
 }

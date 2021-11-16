@@ -5,20 +5,18 @@ public class GuiApp {
         int height = 800;
         int width = 800;
 
-        Rectangle rectangle = new Rectangle(200, 300, 20, 50);
-        Rectangle rectangle2 = new Rectangle(111, 200, 200, 500);
-        Rectangle rectangle3 = new Rectangle(200, 50, 600, 600);
-        Circle circle = new Circle(190, 500, 300);
+        Rectangle r = new Rectangle(200, 300, 20, 50);
+        Rectangle r2 = new Rectangle(111, 200, 200, 500);
+        Rectangle r3 = new Rectangle(200, 50, 600, 600);
+        Circle c = new Circle(190, 500, 300);
 
         Drawing drawing = new Drawing();
-        drawing.add(rectangle);
-        drawing.add(rectangle2);
-        drawing.add(rectangle3);
-        drawing.add(circle);
+        drawing.add(r, r2, r3, c);
 
         Gui gui = new Gui(height, width);
-        drawing.draw(gui);
-
+        for (Drawable drawable : drawing) {
+            drawable.draw(gui);
+        }
         gui.draw();
     }
 }
