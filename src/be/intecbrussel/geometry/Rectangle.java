@@ -23,22 +23,29 @@ public class Rectangle extends Shape {
     }
 
     public Rectangle(int height, int width, int x, int y) {
+        super(x, y);
         setWidth(width);
         setHeight(height);
-        super.setPosition(x, y);
     }
 
     public Rectangle(Rectangle rectangle) {
-        this(rectangle.getWidth(), rectangle.getHeight(), rectangle.getX(), rectangle.getY());
+        this(rectangle.getWidth(), rectangle.getHeight(), rectangle.getX(),
+             rectangle.getY());
     }
 
     // methods
-    public void setWidth(int width) {
-        this.width = makeAbsolute(width);
+    public void setWidth(int width) throws RuntimeException {
+        if (width < 0)
+            throw new NegativeSizeException("negative width " +
+                                                    "rectangle");
+        this.width = /* makeAbsolute */ (width);
     }
 
-    public void setHeight(int height) {
-        this.height = makeAbsolute(height);
+    public void setHeight(int height) throws RuntimeException {
+        if (height < 0)
+            throw new NegativeSizeException("negative height " +
+                                                    "rectangle");
+        this.height = /* makeAbsolute */ (height);
     }
 
     public int getWidth() {
@@ -96,9 +103,10 @@ public class Rectangle extends Shape {
     @Override
     public String toString() {
         return String.format("A rectangle with width %d, height %d at " +
-                        "x-position %d and y-position %d and with hashcode %d", width,
-                height,
-                getX(),
-                getY(), hashCode());
+                                     "x-position %d and y-position %d and with hashcode %d",
+                             width,
+                             height,
+                             getX(),
+                             getY(), hashCode());
     }
 }

@@ -6,17 +6,17 @@ public interface Scalable {
     int HALF = 50;
     int DOUBLE = 200;
 
-    void scale(int factor);
+    void scale(int factor) ;
 
-    default void scaleDouble() {
+    default void scaleDouble()  {
         scale(DOUBLE);
     }
 
-    default void scaleHalf() {
+    default void scaleHalf()  {
         scale(HALF);
     }
 
-    default void scaleQuarter() {
+    default void scaleQuarter()  {
         scale(QUARTER);
     }
 

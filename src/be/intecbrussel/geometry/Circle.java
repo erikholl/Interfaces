@@ -35,7 +35,10 @@ public class Circle extends Shape {
         return radius;
     }
 
-    public void setRadius(int radius) {
+    public void setRadius(int radius) throws RuntimeException {
+        if (radius < 0)
+            throw new NegativeSizeException("negative radius " +
+                                                    "circle");
         this.radius = makeAbsolute(radius);
     }
 
@@ -54,7 +57,8 @@ public class Circle extends Shape {
     public boolean equals(Object o) {
         if ((o != null) && (getClass() == o.getClass()) && (((Circle) o).getX() == getX()) && (((Circle) o).getY() == getY()) && (((Circle) o).getRadius() == getRadius())) {
             return true;
-        } else return false;
+        } else
+            return false;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class Circle extends Shape {
     @Override
     public String toString() {
         return String.format("A circle with radius %d, area %f and perimeter " +
-                "%f", radius, getArea(), getPerimeter());
+                                     "%f", radius, getArea(), getPerimeter());
     }
 
     @Override

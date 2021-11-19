@@ -2,6 +2,7 @@ package be.intecbrussel.geometry;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class Drawing implements Drawable, Iterable<Drawable> {
@@ -23,7 +24,7 @@ public class Drawing implements Drawable, Iterable<Drawable> {
         int index = findElementIndex(null); // find the 1st null in array of
         // drawables, as that is the position we want to add a new drawable to
 
-        if(findElementIndex(d) != -1) { // check if the drawable we want to
+        if (findElementIndex(d) != -1) { // check if the drawable we want to
             // add, already exists in the array of drawables.
             return; // if it does exist, we exit (we don't add)
         }
@@ -120,13 +121,14 @@ public class Drawing implements Drawable, Iterable<Drawable> {
         @Override
         public boolean hasNext() {
             if (indexNextElement >= drawables.length) {
-                return false;
+                throw new NoSuchElementException("no more elements in " +
+                                                         "drawables");
+//                return false;
             }
 
-            if(drawables[indexNextElement] != null) {
+            if (drawables[indexNextElement] != null) {
                 return true;
-            }
-            else {
+            } else {
                 indexNextElement++;
                 return hasNext(); // recursion: the hasNext method calls
                 // itself. We use this here to skip a null value and check
